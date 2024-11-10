@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import axios from "axios";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import axios from "axios";
 import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import NavbarWithStyling from "./components/navbar/navbarWithStyling";
-import HoverButton from "./components/button/Button";
-import AboutView from "./Pages/AboutView";
-import HomeView from "./Pages/HomeView";
-import NotFoundView from "./Pages/NotFoundView";
-import LoginPage from "./Pages/Login";
-import RegisterPage from "./Pages/Register";
+import NavbarWithStyling from "./components/Navbar/navbarWithStyling";
+import Button from "./components/Elements/button/Button";
+import AboutView from "./pages/AboutView";
+import HomeView from "./pages/HomeView";
+import NotFoundView from "./pages/NotFoundView";
+import LoginPage from "./pages/Login";
+import RegisterPage from "./pages/Register";
 
 // const router = createBrowserRouter([
 //   {

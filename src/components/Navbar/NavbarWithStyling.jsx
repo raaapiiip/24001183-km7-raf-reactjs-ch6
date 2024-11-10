@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./NavbarWithStyling.module.css";
-import About from "../about/About";
-import HoverButton from "../button/HoverButton";
+import About from "../About/About";
+import HoverButton from "../Elements/button/HoverButton";
 
 const NavbarWithStyling = ({ menu, name, age, address }) => {
   let list;

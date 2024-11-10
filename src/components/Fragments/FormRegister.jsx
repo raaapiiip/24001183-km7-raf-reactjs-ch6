@@ -1,7 +1,7 @@
-import { Button } from "../Elements/button/Button";
-import { InputForm } from "../Elements/input";
+import Button from "../Elements/button/Button";
+import InputForm from "../Elements/input";
 
-export const FormRegister = () => {
+const FormRegister = () => {
   return (
     <form>
       <InputForm
@@ -32,3 +32,5 @@ export const FormRegister = () => {
     </form>
   );
 };
+
+export default FormRegister;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useNavbar = () => {
+const useNavbar = () => {
   const [isToggle, isActiveToggle] = useState(false);
   const [count, isCount] = useState(0);
   const [isField, isFieldFilled] = useState(false);
@@ -23,3 +23,5 @@ export const useNavbar = () => {
     isClicked,
   };
 };
+
+export default useNavbar;

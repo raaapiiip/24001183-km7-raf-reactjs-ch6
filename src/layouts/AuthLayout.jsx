@@ -1,4 +1,4 @@
-export const AuthLayout = ({ title, children }) => {
+const AuthLayout = ({ title, children }) => {
   return (
     <>
       <div>
@@ -11,3 +11,5 @@ export const AuthLayout = ({ title, children }) => {
     </>
   );
 };
+
+export default AuthLayout;

@@ -1,7 +1,7 @@
-import { Input } from "./input";
-import { Label } from "./label";
+import Input from "./input";
+import Label from "./label";
 
-export const InputForm = ({ label, name, type, placeholder }) => {
+const InputForm = ({ label, name, type, placeholder }) => {
   return (
     <>
       return <label htmlFor={name}>{label} </label>
@@ -9,3 +9,5 @@ export const InputForm = ({ label, name, type, placeholder }) => {
     </>
   );
 };
+
+export default InputForm;

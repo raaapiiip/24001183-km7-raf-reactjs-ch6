@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { FormLogin } from "../components/Fragments/FormLogin";
-import { AuthLayout } from "../Layouts/AuthLayout";
+import FormLogin from "../components/Fragments/FormLogin";
+import AuthLayout from "../Layouts/AuthLayout";
 
 const LoginPage = () => {
   return (

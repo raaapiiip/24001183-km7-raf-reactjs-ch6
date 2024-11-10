@@ -1,7 +1,7 @@
-import { Button } from "../Elements/button/Button";
-import { InputForm } from "../Elements/input";
+import Button from "../Elements/button/Button";
+import InputForm from "../Elements/input";
 
-export const FormLogin = () => {
+const FormLogin = () => {
   return (
     <form>
       <InputForm
@@ -20,3 +20,5 @@ export const FormLogin = () => {
     </form>
   );
 };
+
+export default FormLogin;
