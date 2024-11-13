@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
-import NavbarTailwind from "../components/Navbar/NavbarTailwind";
+import Notification from "../components/Notification/Notification";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [notification, setNotification] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -27,17 +29,49 @@ function Login() {
 
         localStorage.setItem("token", token);
         localStorage.setItem("username", username);
-        localStorage.setItem("rahasia punya Rafif", "aku bangga dengan teman-temanku");
+        localStorage.setItem(
+          "rahasia punya Rafif",
+          "aku bangga dengan teman-temanku"
+        );
+
+        setNotification({
+          type: "success",
+          message: response.data.message || "Login success",
+          description: "You are now redirected to homepage!",
+        });
+
+        setTimeout(() => {
+          navigate("/");
+          navigate(0);
+        }, 2000);
+      } else {
+        console.log("Apakah masuk ke sini?");
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data.message);
+
+      setNotification({
+        type: "error",
+        message: error.response.data.message || "An error occured",
+        description: "Please try again!",
+      });
     }
+
+    setTimeout(() => setNotification(null), 2000);
   };
 
   return (
     <>
-      <NavbarTailwind />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        {notification && (
+          <Notification
+            type={notification.type}
+            message={notification.message}
+            description={notification.description}
+            onClose={() => setNotification(null)}
+          />
+        )}
+
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             alt="Your Company"

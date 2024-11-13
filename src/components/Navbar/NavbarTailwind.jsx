@@ -20,7 +20,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function NavbarTailwind() {
+function NavbarTailwind({ onLogout }) {
+  const menuItemClass =
+    "block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none";
+  const buttonStyleFix =
+    "appearance-none bg-transparent border-none p-0 m-0 inline-flex";
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -96,28 +100,23 @@ function NavbarTailwind() {
                 className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
               >
                 <MenuItem>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
-                  >
+                  <a href="#" className={`${menuItemClass}`}>
                     Your Profile
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
-                  >
+                  <a href="#" className={`${menuItemClass}`}>
                     Settings
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a
+                  <button
                     href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
+                    className={`${menuItemClass} ${buttonStyleFix}`}
+                    onClick={onLogout}
                   >
                     Sign out
-                  </a>
+                  </button>
                 </MenuItem>
               </MenuItems>
             </Menu>

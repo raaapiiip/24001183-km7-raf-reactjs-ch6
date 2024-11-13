@@ -54,7 +54,7 @@ function Home() {
 
   return (
     <>
-      <header className="flex justify-between p-4 bg-white shadow-md">
+      {/* <header className="flex justify-between p-4 bg-white shadow-md">
         <div className="flex items-center space-x-4">
           <h1 className="text-lg font-bold mt-0 text-blue-800">
             Binar Car Rental
@@ -87,7 +87,7 @@ function Home() {
         >
           Login
         </button>
-      </header>
+      </header> */}
 
       {loading && <p> loading... </p>}
       {error && <p className="text-red-500">{error}</p>}
@@ -131,7 +131,6 @@ function Home() {
         </section>
       )}
 
-      {/* Pagination controls */}
       <div className="flex justify-center space-x-2 mt-6">
         <button
           disabled={currentPage === 1}
