@@ -1,63 +1,35 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Notification from "../components/Notification/Notification";
+import { useAuth } from "../hooks/useAuth";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [notification, setNotification] = useState(null);
-  const navigate = useNavigate();
+
+  const { login } = useAuth();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/v1/auth/login",
-        {
-          email,
-          password,
-        },
-        { headers: { "Content-Type": "application/json" } }
-      );
-      console.log(response);
-
-      if (response.data.isSuccess) {
-        const token = response.data.data.token;
-        const username = response.data.data.username;
-
-        localStorage.setItem("token", token);
-        localStorage.setItem("username", username);
-        localStorage.setItem(
-          "rahasia punya Rafif",
-          "aku bangga dengan teman-temanku"
-        );
-
-        setNotification({
-          type: "success",
-          message: response.data.message || "Login success",
-          description: "You are now redirected to homepage!",
-        });
-
-        setTimeout(() => {
-          navigate("/");
-          navigate(0);
-        }, 2000);
-      } else {
-        console.log("Apakah masuk ke sini?");
-      }
-    } catch (error) {
-      console.log(error.response.data.message);
+      const response = await login(email, password);
 
       setNotification({
+        type: "success",
+        message: response.data.message || "Login successful",
+        description: "You are now redirected to homepage!",
+      });
+
+      setTimeout(() => setNotification(null), 3000);
+    } catch (error) {
+      setNotification({
         type: "error",
-        message: error.response.data.message || "An error occured",
+        message: error.response?.data?.message || "An error occured",
         description: "Please try again!",
       });
-    }
 
-    setTimeout(() => setNotification(null), 2000);
+      setTimeout(() => setNotification(null), 3000);
+    }
   };
 
   return (
